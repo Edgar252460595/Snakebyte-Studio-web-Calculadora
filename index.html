@@ -1,0 +1,323 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnakeByte Studio</title>
+    <link rel="stylesheet" href="/Style.css" />
+    <link rel="stylesheet" href="Style.css" />
+
+
+
+  <!-- <base href="/Snakebyte-Studio-web/">  -->
+
+
+  </head>
+
+  <body>
+    
+    <!-- Barra superior -->
+    <header id="barraSuperior">
+      <div class="contenedorHeader">
+
+        <nav class="navegacionPrincipal" aria-label="Navegación principal">
+          <ul class="menuBarraSuperior">
+            <li class="textoBarraSuperior"><a href="/index.html">Inicio</a></li>
+            <li class="textoBarraSuperior"><a href="#">SnakeCore</a></li>
+            <li class="textoBarraSuperior"><a href="/index.html#proyectos">Proyectos</a></li>
+          </ul>
+        </nav>
+        <img class="LogoPixelBarraSuperior" src="/image/LogoPixel.png" alt="LogoSnake"/>
+
+      </div>
+    </header>
+
+
+
+    <!-- Menu inicial Calculadora-->
+
+    <h1 class="tituloCalculadoraPrincipal">Calculadora Mecanica</h1>
+
+    <div class="menuGeneral"> 
+    <h3 class="tituloCalculadora">Elegir Calculadora:</h3>
+      <div class="menuContenedor">
+      <button class="BotonListaCalculadora">Elegir Calculadora ▾ </button>
+      <!-- Eleccion de calculadoras -->
+      <ul id="listaCalculadora" class="listaCalculadora">
+        <a href="#" data-calculadora="ohm">Ley de Ohm</a> 
+        <a href="#" data-calculadora="torque">Torque</a>
+        <a href="#" data-calculadora="faraday">Faraday</a>
+      </ul>
+      </div>
+    </div>
+    <p class="descripcionCalculadora">Elige una calculadora para comenzar:</p>
+
+
+
+
+
+
+
+<!-- Calculadoras -->
+<div id="calc-ohm" class="calculadora" style="display: none;">
+
+<!-- Calculadora ohm -->
+
+  <h2 class="TituloPrincipalOhm">Calculadora Ley de Ohm</h2>
+<div class="contenedormovilohm">
+   <label class="preguntaCalculadoraOhm">¿Qué deseas calcular? </label>
+  <select id="selectorOhm" onchange="mostrarOpcion()">
+    <option value="">-- Elige --</option>
+    <option value="voltaje">Voltaje (V)</option>
+    <option value="corriente">Corriente (I)</option>
+    <option value="resistencia">Resistencia (R)</option>
+  </select>
+</div>
+
+   <!-- Voltaje -->
+
+   <div class="contenedorTotalCalucadoraOhm">
+
+  <div class="opcionesOhm">
+
+  <div id="voltaje" class="opcionOhm">
+    <h3>Calcular Voltaje</h3>
+
+    <label>Corriente:
+            <br>
+      <input type="number" id="i_v" oninput="calcularVoltaje()"> 
+      <select id="unidad_i_v" onchange="calcularVoltaje()">
+        <option value="1">A</option>
+        <option value="0.001">mA</option>
+        <option value="0.000001">µA</option>
+      </select>
+    </label><br>
+    <label>Resistencia:
+       <br>
+      <input type="number" id="r_v" oninput="calcularVoltaje()"> 
+      <select id="unidad_r_v" onchange="calcularVoltaje()">
+        <option value="1">Ω</option>
+        <option value="1000">kΩ</option>
+        <option value="1000000">MΩ</option>
+      </select>
+    </label>
+
+
+    
+    <div class="resultadoOhm">
+      Resultado: <br> <span id="resultado_v"></span>
+      <select id="conv_v" onchange="calcularVoltaje()">
+        <option value="1">V</option>
+        <option value="0.001">mV</option>
+        <option value="1000">kV</option>
+      </select>
+      <div class="resultadoPotencia" id="potencia_v"></div>
+    </div>
+  </div>
+
+  <!-- Corriente -->
+  <div id="corriente" class="opcionOhm">
+    <h3>Calcular Corriente</h3>
+    <label>Voltaje:
+       <br>
+      <input type="number" id="v_i" oninput="calcularCorriente()"> 
+      <select id="unidad_v_i" onchange="calcularCorriente()">
+        <option value="1">V</option>
+        <option value="0.001">mV</option>
+        <option value="1000">kV</option>
+      </select>
+    </label><br>
+    <label>Resistencia:
+       <br>
+      <input type="number" id="r_i" oninput="calcularCorriente()"> 
+      <select id="unidad_r_i" onchange="calcularCorriente()">
+        <option value="1">Ω</option>
+        <option value="1000">kΩ</option>
+        <option value="1000000">MΩ</option>
+      </select>
+    </label>
+    <div class="resultadoOhm">
+      Resultado: <br> <span id="resultado_i"></span>
+      <select id="conv_i" onchange="calcularCorriente()">
+        <option value="1">A</option>
+        <option value="0.001">mA</option>
+        <option value="0.000001">µA</option>
+      </select>
+      <div class="resultadoPotencia" id="potencia_i"></div>
+    </div>
+  </div>
+
+  <!-- Resistencia -->
+  <div id="resistencia" class="opcionOhm">
+    <h3>Calcular Resistencia</h3>
+    <label>Voltaje:
+       <br>
+      <input type="number" id="v_r" oninput="calcularResistencia()"> 
+      <select id="unidad_v_r" onchange="calcularResistencia()">
+        <option value="1">V</option>
+        <option value="0.001">mV</option>
+        <option value="1000">kV</option>
+      </select>
+    </label><br>
+    <label>Corriente:
+       <br>
+      <input type="number" id="i_r" oninput="calcularResistencia()"> 
+      <select id="unidad_i_r" onchange="calcularResistencia()">
+        <option value="1">A</option>
+        <option value="0.001">mA</option>
+        <option value="0.000001">µA</option>
+      </select>
+    </label>
+
+
+    <div class="resultadoOhm">
+      Resultado:  <br> <span id="resultado_r"></span>
+      <select id="conv_r" onchange="calcularResistencia()">
+        <option value="1">Ω</option>
+        <option value="0.001">kΩ</option>
+        <option value="0.000001">MΩ</option>
+      </select>
+      <div class="resultadoPotencia" id="potencia_r"></div>
+    </div>
+  </div>
+
+      </div>
+
+
+    <div class="contenedorImageOhm">
+    <img src="img/Ohm Ilustración.png" alt="Ley de Ohm" class="imagenOhm">
+      </div>
+    </div>
+    </div>
+
+</div>
+
+  
+
+
+<!-- Calculadora Torque -->
+
+<div id="calc-torque" class="calculadora calculadoraTorque" style="display: none;">
+  
+  <h2 class="tituloCalculadoraTorque">Calculadora de Torque</h2>
+  <div class="contenedorCalculadoraTorque">
+    
+  <input type="number" id="fuerza" placeholder="Fuerza (N)" />   
+  <select id="unidadFuerza">
+  <option value="1">N</option>
+  <option value="9.80665">kgf</option>
+  <option value="4.44822">lbf</option>
+  <option value="0.278">ozf</option>
+  <option value="9806.65">tfm (tonelada-fuerza)</option>
+</select>
+
+  
+
+  <input type="number" id="distancia" placeholder="Distancia" />  
+
+
+<select id="unidadDistancia">
+  <option value="1">m</option>
+  <option value="0.001">mm</option>
+  <option value="0.01">cm</option>
+  <option value="1000">km</option>
+  <option value="0.0254">in</option>
+  <option value="0.3048">ft</option>
+  <option value="0.9144">yd</option>
+  <option value="1609.344">mi</option>
+</select>
+
+
+
+
+  <button id="calcularTorque" class="botonCalcular">Calcular Torque</button>
+  </div>
+
+  <div class="contenedorUnidadTorque">
+    <span class="eligeTorque">Elige unidad de salida de Torque: </span>
+  <select id="unidadTorque">
+  <option value="1">N·m</option>
+  <option value="0.737562149">lb·ft</option>
+  <option value="8.8507457676">lb·in</option>
+  <option value="0.1019716213">kg·m</option>
+</select>
+</div>
+<div class="resultadoContenedor-imagen">
+
+    
+  <p id="resultadoTorque" class="resultado"></p>
+
+
+  
+
+
+  <img src="img/Torque ilustracion.png" alt="Imagen de Torque" class="imagenTorque">
+  </div>
+  
+</div>
+
+
+
+<!-- Calculadora Faraday -->
+
+<div id="calc-faraday"  style="display: none;">
+
+    <h2 class="tituloCalculadoraFaraday">Calculadora Ley de Faraday</h2>
+
+    <div class="campoFaraday">
+      <label for="vueltas">Número de vueltas (N):</label>
+      <input type="number" id="vueltas" placeholder="Ej. 100">
+    </div>
+
+    <div class="campoFaraday">
+      <label for="flujo">Cambio de flujo magnético (ΔΦ):</label>
+      <input type="number" id="flujo" placeholder="Ej. 0.05">
+      <select id="unidadFlujo">
+        <option value="Wb">Webers (Wb)</option>
+        <option value="mWb">Miliwebers (mWb)</option>
+        <option value="μWb">Microwebers (μWb)</option>
+      </select>
+    </div>
+
+    <div class="campoFaraday">
+      <label for="tiempo">Tiempo (Δt):</label>
+      <input type="number" id="tiempo" placeholder="Ej. 0.01">
+      <select id="unidadTiempo">
+        <option value="s">Segundos (s)</option>
+        <option value="ms">Milisegundos (ms)</option>
+        <option value="μs">Microsegundos (μs)</option>
+      </select>
+    </div>
+
+    <button onclick="calcularFaraday()">Calcular FEM</button>
+
+    <div class="resultado" id="resultado">
+      Introduce los datos y presiona "Calcular".
+    </div>
+
+   </div>
+
+
+
+
+
+        <!-- pie de pagina -->
+
+      <footer id="piePagina">
+      <div class="contenedorPiepagina">
+      <p class="textoDerechosAutor">&copy; 2025 SnakeByte Studio. Todos los derechos reservados.</p>
+      
+      <a href="https://www.facebook.com/profile.php?id=61578758635101" target="_blank">
+
+      <img class="LogoFacebookBarraInferior" src="/image/LogoFacebook.png" alt="LogoFacebook"/>
+        </a>
+      </div>
+      
+        </footer>
+
+
+   
+    </script>
+      <script src="js/Script.js"></script>
+
+  </body>
+</html>
