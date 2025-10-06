@@ -1,3 +1,17 @@
+// Detecta si estamos en GitHub Pages
+  const isGitHub = window.location.hostname.includes("github.io");
+
+  if (isGitHub) {
+    // Oculta el header y el footer si existe
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.getElementById("barraSuperior");
+      const footer = document.getElementById("piePagina");
+
+      if (header) header.style.display = "none";
+      if (footer) footer.style.display = "none";
+    });
+  }
+
 
 const boton = document.querySelector(".BotonListaCalculadora");
 const listaCalculadora = document.getElementById("listaCalculadora");
